@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "66ca7a6c7a79035f71b04697",
+    "produto": "arroz",
+    "quantidade": 10,
+    "categoria": "alimentícia",
+    "codBarras": 1234567891012,
+    "createdAt": "2024-08-25T00:27:24.479Z",
+    "updatedAt": null,
+    "__v": 0
+  },
+  {
+    "_id": "66ca7aa6d80e0fdd4cb3661f",
+    "produto": "trigo",
+    "quantidade": 15,
+    "categoria": "alimentícia",
+    "codBarras": 1234567891014,
+    "createdAt": "2024-08-25T00:28:22.107Z",
+    "updatedAt": null,
+    "__v": 0
+  }
+]

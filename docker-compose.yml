@@ -1,0 +1,62 @@
+version: '3'
+services:
+  mongo1:
+    image: mongo
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - 9091:27017
+    volumes:
+      - ./data/mongo1db:/data/db
+    networks:
+      - estoque-network
+    depends_on:
+      - mongo2
+      - mongo3
+
+  mongo2:
+    image: mongo
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - 9092:27017
+    volumes:
+      - ./data/mongo2db:/data/db
+    networks:
+      - estoque-network
+
+  mongo3:
+    image: mongo
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - 9093:27017
+    volumes:
+      - ./data/mongo3db:/data/db
+    networks:
+      - estoque-network
+
+  mongo-setup:
+    image: mongo
+    depends_on:
+      - mongo1
+      - mongo2
+      - mongo3
+    networks:
+      - estoque-network
+    entrypoint: >
+      bash -c "
+      sleep 10;
+      mongo --host mongo1:27017 <<EOF
+      rs.initiate({
+        _id: 'rs0',
+        members: [
+          { _id: 0, host: 'mongo1:27017' },
+          { _id: 1, host: 'mongo2:27017' },
+          { _id: 2, host: 'mongo3:27017' }
+        ]
+      });
+      rs.status();
+      EOF
+      "
+
+networks:
+  estoque-network:
+    external: true
