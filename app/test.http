@@ -1,0 +1,15 @@
+### 
+
+GET http://localhost:3000/stocks
+
+###
+
+POST http://localhost:3000/stocks
+Content-Type: application/json
+
+{
+    "produto": "café",
+    "quantidade": 5,
+    "codBarras": 123841971249,
+    "categoria": "all"
+}

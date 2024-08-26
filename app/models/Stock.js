@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const estoqueSchema = new mongoose.Schema({
+const stockSchema = new mongoose.Schema({
     produto: { type: String, required: true, trim: true, maxlength: 150 },
     quantidade: { type: Number, default: 0 },
     categoria: { type: String, trim: true },
@@ -9,4 +9,4 @@ const estoqueSchema = new mongoose.Schema({
     updatedAt: { type: Date, required: false }
 })
 
-module.exports = mongoose.model("Estoque", estoqueSchema)
+module.exports = mongoose.model("Stock", stockSchema)

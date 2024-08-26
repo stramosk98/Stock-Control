@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(__dirname, './estoqueData.json');
+const filePath = path.join(__dirname, './stockData.json');
 
-class estoqueJson {
+class stockJson {
     static readJson() {
         if (fs.existsSync(filePath)) {
             const data = fs.readFileSync(filePath, 'utf-8');
@@ -16,9 +16,9 @@ class estoqueJson {
         fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
     }
 
-    static atualizaJson(estoques) {
-        this.writeJson(estoques);
+    static atualizaJson(stocks) {
+        this.writeJson(stocks);
     }
 }
 
-module.exports = estoqueJson;
+module.exports = stockJson;
