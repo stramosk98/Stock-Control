@@ -70,6 +70,19 @@ services:
     networks:
       - stock-network
 
+  nginx:
+    image: nginx:latest
+    ports:
+      - "5000:5000"
+    depends_on:
+      - app1
+      - app2
+      - app3
+    volumes:
+      - ./load-balancer/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - stock-network
+
 volumes:
   mongo1_data:
   mongo2_data:

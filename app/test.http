@@ -1,7 +1,6 @@
 ### 
 
-GET http://localhost:3000/stocks
-
+GET http://localhost:5000/stocks
 ###
 
 POST http://localhost:3000/stocks
